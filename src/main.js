@@ -4,10 +4,15 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueLazyload from 'vue-lazyload'
 
 import fastclick from 'fastclick'
 import 'style/index.scss'
 fastclick.attach(document.body)
+
+Vue.use(VueLazyload, {
+  loading: require('common/image/default.png')
+})
 
 if(process.env.NODE_ENV === 'production'){
   //生产环境 关闭警告 vue-devtools
