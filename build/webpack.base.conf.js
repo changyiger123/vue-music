@@ -9,7 +9,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: ['babel-polyfill','./src/main.js']
+    app: './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -24,10 +24,11 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       'src': path.resolve(__dirname, '../src'),
-      'assets': path.resolve(__dirname, '../src/assets'),
+      'common': path.resolve(__dirname, '../src/common'),
+      'base': path.resolve(__dirname, '../src/base'),
       'components': path.resolve(__dirname, '../src/components'),
       'views': path.resolve(__dirname, '../src/views'),
-      'styles': path.resolve(__dirname, '../src/styles'),
+      'style': path.resolve(__dirname, '../src/style'),
       'api': path.resolve(__dirname, '../src/api'),
       'utils': path.resolve(__dirname, '../src/utils'),
       'store': path.resolve(__dirname, '../src/store'),

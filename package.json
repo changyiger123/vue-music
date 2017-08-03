@@ -1,7 +1,7 @@
 {
-  "name": "webpack-multi-env",
+  "name": "vue-music",
   "version": "1.0.0",
-  "description": "webpack多环境模板",
+  "description": "移动端",
   "author": "iyy <chengzhangiyy@163.com>",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "babel-polyfill": "^6.23.0",
+    "fastclick": "^1.0.6",
     "vue": "^2.3.3",
     "vue-router": "^2.3.1",
     "vuex": "^2.3.1"
@@ -25,6 +25,7 @@
     "babel-preset-env": "^1.3.2",
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
+    "babel-polyfill": "^6.23.0",
     "chalk": "^1.1.3",
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
