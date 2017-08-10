@@ -4,6 +4,7 @@ import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import VueLazyload from 'vue-lazyload'
 
 import fastclick from 'fastclick'
@@ -14,7 +15,7 @@ Vue.use(VueLazyload, {
   loading: require('common/image/default.png')
 })
 
-if(process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === 'production') {
   //生产环境 关闭警告 vue-devtools
   Vue.config.productionTip = false
   Vue.config.devtools = false
@@ -24,6 +25,7 @@ if(process.env.NODE_ENV === 'production'){
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
-  components: { App }
+  components: {App}
 })
