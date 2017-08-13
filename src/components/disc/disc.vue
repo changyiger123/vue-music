@@ -36,21 +36,20 @@
     methods: {
       _getSongList(){
         if (!this.disc.dissid) {
-          this.$router.push({
-            path: `/recommend`
-          })
+          this.$router.push(`/recommend`)
           return
         }
-
+        console.log(this.disc.dissid)
         getSongList(this.disc.dissid)
           .then(res => {
+            console.log(res.cdlist[0])
             if (res.code === ERR_OK) {
               console.log(res.cdlist[0])
               this.songs = this._normalizeSongs(res.cdlist[0].songlist)
             }
           })
           .catch(err => {
-
+            console.log(err)
           })
       },
       _normalizeSongs(list){

@@ -15,10 +15,5 @@
   }
 </script>
 <style scoped lang="scss" rel="stylesheet/scss">
-  @import "~style/variable";
-  @import "~style/mixin";
 
-  .search {
-
-  }
 </style>
