@@ -4,9 +4,11 @@
           :pullup="pullup"
           @scrollToEnd="searchMore"
           ref="suggest"
+          :beforeScroll="beforeScroll"
+          @beforeScroll="listScroll"
   >
     <ul class="suggest-list">
-      <li class="suggest-item" v-for="item in result">
+      <li class="suggest-item" @click="selectItem(item)" v-for="item in result">
         <div class="icon">
           <i :class="getItemCls(item)"></i>
         </div>
@@ -16,6 +18,11 @@
       </li>
       <loading v-show="hasMore" title=""></loading>
     </ul>
+    <div class="no-result-wrapper"
+         v-show="!hasMore && !result.length"
+    >
+      <no-result title="抱歉，暂无搜索结果"></no-result>
+    </div>
   </scroll>
 </template>
 <script>
@@ -24,6 +31,9 @@
   import {createSong} from 'common/js/song'
   import Scroll from 'base/scroll/scroll'
   import Loading from 'base/loading/loading'
+  import Singer from 'common/js/singer'
+  import {mapMutations, mapActions} from 'vuex'
+  import NoResult from 'base/no-result/no-result'
 
   const TYPE_SINGER = 'singer'
   const perpage = 20
@@ -49,14 +59,40 @@
         page: 1,
         result: [],
         pullup: true,
-        hasMore: true
+        hasMore: true,
+        beforeScroll: true
       }
     },
     components: {
       Scroll,
-      Loading
+      Loading,
+      NoResult
     },
     methods: {
+      refresh(){
+        this.$refs.suggest.refresh
+      },
+      listScroll(){
+        this.$emit('listScroll')
+      },
+      selectItem(item){
+        //判断点击是歌手还是歌曲
+        if (item.type === TYPE_SINGER) {
+          const singer = new Singer({
+            id: item.singermid,
+            name: item.singername
+          })
+
+          this.$router.push({
+            path: `/search/${singer.id}`
+          })
+          this.setSinger(singer)
+        } else {
+          this.insertSong(item)
+        }
+
+        this.$emit('select')
+      },
       searchMore(){
         if (!this.hasMore) {
           return
@@ -123,7 +159,13 @@
           }
         })
         return ret
-      }
+      },
+      ...mapMutations({
+        setSinger: 'SET_SINGER'
+      }),
+      ...mapActions([
+        'insertSong'
+      ])
     }
   }
 </script>

@@ -23,8 +23,7 @@ export default new Router({
       children: [{
         path: ':id',
         component: Disc
-      }
-      ]
+      }]
     },
     {
       path: '/rank',
@@ -32,8 +31,7 @@ export default new Router({
       children: [{
         path: ':id',
         component: TopList
-      }
-      ]
+      }]
     },
     {
       path: '/singer',
@@ -41,12 +39,15 @@ export default new Router({
       children: [{
         path: ':id',
         component: SingerDetail
-      }
-      ]
+      }]
     },
     {
       path: '/search',
-      component: Search
+      component: Search,
+      children: [{
+        path: ':id',
+        component: SingerDetail
+      }]
     }
   ]
 })
