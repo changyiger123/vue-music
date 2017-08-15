@@ -32,7 +32,7 @@
   import Scroll from 'base/scroll/scroll'
   import Loading from 'base/loading/loading'
   import Singer from 'common/js/singer'
-  import {mapMutations, mapActions,mapGetters} from 'vuex'
+  import {mapMutations, mapActions, mapGetters} from 'vuex'
   import NoResult from 'base/no-result/no-result'
 
   const TYPE_SINGER = 'singer'
@@ -68,9 +68,9 @@
       Loading,
       NoResult
     },
-    computed:{
+    computed: {
       ...mapGetters([
-          'sequenceList'
+        'sequenceList'
       ])
     },
     methods: {

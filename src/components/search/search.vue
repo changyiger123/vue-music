@@ -50,12 +50,12 @@
   import {mapGetters, mapActions} from 'vuex'
   import SearchList from 'base/search-list/search-list'
   import Confirm from 'base/confirm/confirm'
-  import {playlistMixin,searchMixin} from 'common/js/mixin'
+  import {playlistMixin, searchMixin} from 'common/js/mixin'
   import Scroll from 'base/scroll/scroll'
 
 
   export default{
-    mixins: [playlistMixin,searchMixin],
+    mixins: [playlistMixin, searchMixin],
     components: {
       SearchBox,
       Suggest,

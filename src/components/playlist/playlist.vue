@@ -15,7 +15,8 @@
                 :refreshDelay="refreshDelay"
         >
           <transition-group name="list" tag="ul">
-            <li :key="item.id" class="item" ref="listItem"  @click="selectItem(item,index)"  v-for="(item,index) in sequenceList">
+            <li :key="item.id" class="item" ref="listItem" @click="selectItem(item,index)"
+                v-for="(item,index) in sequenceList">
               <i class="current" :class="getCurrentIcon(item)"></i>
               <span class="text">{{item.name}}</span>
               <span class="like">
@@ -45,7 +46,7 @@
 </template>
 
 <script>
-  import {mapGetters,mapMutations,mapActions} from 'vuex'
+  import {mapGetters, mapMutations, mapActions} from 'vuex'
   import Scroll from 'base/scroll/scroll'
   import {playMode} from 'common/js/config'
   import Confirm from 'base/confirm/confirm'
@@ -53,21 +54,21 @@
   import AddSong from 'components/add-song/add-song'
 
   export default{
-      mixins:[playerMixin],
+    mixins: [playerMixin],
     data(){
       return {
         showFlag: false,
-        refreshDelay:100
+        refreshDelay: 100
       }
     },
-    components:{
+    components: {
       Scroll,
       Confirm,
       AddSong
     },
-    computed:{
+    computed: {
       modeText(){
-          return this.mode === playMode.sequence ? '顺序播放': this.mode === playMode.random ? '随机播放':'单曲循环'
+        return this.mode === playMode.sequence ? '顺序播放' : this.mode === playMode.random ? '随机播放' : '单曲循环'
       }
     },
     methods: {
@@ -79,55 +80,55 @@
         this.hide()
       },
       showConfirm(){
-          this.$refs.confirm.show()
-        },
+        this.$refs.confirm.show()
+      },
       deleteOne(item){
         this.deleteSong(item)
-        if(!this.playlist.length){
-            this.hide()
+        if (!this.playlist.length) {
+          this.hide()
         }
       },
-      selectItem(item,index){
-         if(this.mode === playMode.random){
-            index = this.playlist.findIndex(song =>{
-               return song.id === item.id
-            })
-          }
-         this.setCurrentIndex(index)
-          this.setPlayingState(true)
+      selectItem(item, index){
+        if (this.mode === playMode.random) {
+          index = this.playlist.findIndex(song => {
+            return song.id === item.id
+          })
+        }
+        this.setCurrentIndex(index)
+        this.setPlayingState(true)
       },
       getCurrentIcon(item){
-        if(this.currentSong.id === item.id){
+        if (this.currentSong.id === item.id) {
           return `icon-play`
         }
-          return ``
+        return ``
       },
       show(){
         this.showFlag = true
-        setTimeout(()=>{
+        setTimeout(() => {
           this.$refs.listContent.refresh()
           this.scrollToCurrent(this.currentSong)
-        },20)
+        }, 20)
 
       },
       hide(){
         this.showFlag = false
       },
       scrollToCurrent(current){
-        const index = this.sequenceList.findIndex(song=>{
-            return current.id === song.id
+        const index = this.sequenceList.findIndex(song => {
+          return current.id === song.id
         })
         console.log(this.sequenceList)
-        this.$refs.listContent.scrollToElement(this.$refs.listItem[index],300)
+        this.$refs.listContent.scrollToElement(this.$refs.listItem[index], 300)
       }
     },
-    watch:{
-        currentSong(newSong,oldSong){
-            if(!this.showFlag || newSong.id === oldSong.id){
-              return
-            }
-            this.scrollToCurrent(newSong)
+    watch: {
+      currentSong(newSong, oldSong){
+        if (!this.showFlag || newSong.id === oldSong.id) {
+          return
         }
+        this.scrollToCurrent(newSong)
+      }
     }
   }
 

@@ -109,7 +109,7 @@
 <script>
   //第三方动画库
   import animations from 'create-keyframe-animation'
-  import {mapGetters, mapMutations,mapActions} from 'vuex'
+  import {mapGetters, mapMutations, mapActions} from 'vuex'
   import {prefixStyle} from 'common/js/dom'
   import ProgressBar from 'base/progress-bar/progress-bar'
   import ProgressCircle from 'base/progress-circle/progress-circle'
@@ -124,7 +124,7 @@
   const transitionDuration = prefixStyle('transitionDuration')
 
   export default{
-      mixins:[playerMixin],
+    mixins: [playerMixin],
     data(){
       return {
         songReady: false,
@@ -169,9 +169,9 @@
     },
     watch: {
       currentSong(newSong, oldSong){
-          if(!newSong.id){
-              return
-          }
+        if (!newSong.id) {
+          return
+        }
         if (newSong.id === oldSong.id) {
           return
         }
@@ -422,7 +422,7 @@
         setFullScreen: 'SET_FULL_SCREEN'
       }),
       ...mapActions([
-          'savePlayHistory'
+        'savePlayHistory'
       ])
     }
   }

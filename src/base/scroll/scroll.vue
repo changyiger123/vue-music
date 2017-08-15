@@ -33,9 +33,9 @@
         type: Boolean,
         default: false
       },
-      refreshDelay:{
-        type:Number,
-        default:20
+      refreshDelay: {
+        type: Number,
+        default: 20
       }
     },
     mounted(){
@@ -75,10 +75,10 @@
           })
         }
 
-        if(this.beforeScroll){
-            this.scroll.on('beforeScrollStart',()=>{
-                this.$emit('beforeScroll')
-            })
+        if (this.beforeScroll) {
+          this.scroll.on('beforeScrollStart', () => {
+            this.$emit('beforeScroll')
+          })
         }
       },
       enable(){
