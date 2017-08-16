@@ -10,7 +10,10 @@ import VueLazyload from 'vue-lazyload'
 import fastclick from 'fastclick'
 import 'style/index.scss'
 
-import vConsole from 'vconsole'
+if (process.env.NODE_ENV !== 'production') {
+ var vConsole = require('vconsole')
+}
+
 console.log('text')
 fastclick.attach(document.body)
 
@@ -19,6 +22,7 @@ Vue.use(VueLazyload, {
 })
 
 if (process.env.NODE_ENV === 'production') {
+
   //生产环境 关闭警告 vue-devtools
   Vue.config.productionTip = false
   Vue.config.devtools = false

@@ -51,11 +51,11 @@ app.use('/api', apiRoutes)
 
 app.use(express.static('./dist'))
 
-var port = config.env.PORT || config.build.port
-module.exports = app.listen(prot,function (err) {
-  if(eer){
+var port = process.env.PORT || config.build.port
+module.exports = app.listen(port,function (err) {
+  if(err){
     console.log(err)
     return
   }
-  console.log('Listening at http://localhost' + port + '\n')
+  console.log('Listening at http://localhost' + port + '\n' +'快快打开浏览器')
 })

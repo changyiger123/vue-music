@@ -11,11 +11,9 @@ var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var env = process.env.NODE_ENV === 'production' ? config.build.prodEnv : config.build.testEnv
 
-/*
  function resolveApp(relativePath) {
  return path.resolve(relativePath);
  }
- */
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -59,7 +57,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: config.build.index,
       template: 'index.html',
-      //favicon: resolveApp('favicon.ico'),
+      favicon: resolveApp('favicon.ico'),
       inject: true,
       minify: {
         removeComments: true,
