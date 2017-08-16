@@ -4,6 +4,7 @@ var path = require('path')
 module.exports = {
   build: {
     testEnv: require('./test.env'),
+    port:9000,
     prodEnv: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
