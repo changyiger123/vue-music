@@ -9,6 +9,9 @@ import VueLazyload from 'vue-lazyload'
 
 import fastclick from 'fastclick'
 import 'style/index.scss'
+
+import vConsole from 'vconsole'
+console.log('text')
 fastclick.attach(document.body)
 
 Vue.use(VueLazyload, {
