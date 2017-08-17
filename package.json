@@ -8,7 +8,7 @@
     "dev": "node build/dev-server.js",
     "build:prod": "cross-env NODE_ENV=production node build/build.js",
     "build:test": "cross-env NODE_ENV=test node build/build.js",
-    "build:test-preview": "cross-env NODE_ENV=test npm_config_preview=true npm_config_report=true node build/build.js"
+    "build:prod-preview": "cross-env NODE_ENV=production npm_config_preview=true npm_config_report=true node build/build.js"
   },
   "dependencies": {
     "axios": "^0.16.2",

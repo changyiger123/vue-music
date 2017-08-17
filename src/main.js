@@ -14,7 +14,6 @@ if (process.env.NODE_ENV !== 'production') {
  var vConsole = require('vconsole')
 }
 
-console.log('text')
 fastclick.attach(document.body)
 
 Vue.use(VueLazyload, {

@@ -56,7 +56,16 @@
               <progress-bar @percentChange="onPercentChange" :percent="percent"></progress-bar>
             </div>
             <span class="time time-r">{{format(currentSong.duraion)}}</span>
+            <div class="volume-wrapper">
+              <span class="icon-volume"></span>
+              <div class="volume">
+                <span class="add-volume" @click="addVolume">+</span>
+                <progress-bar @percentChange="onPercentChange" :percent="percent"></progress-bar>
+                <span>-</span>
+              </div>
+            </div>
           </div>
+
           <div class="operators">
             <div class="icon i-left" @click="changeMode">
               <i :class="iconMode"></i>
@@ -103,6 +112,7 @@
            @error="error"
            @timeupdate="updateTime"
            @ended="end"
+           @volume="0.0"
     ></audio>
   </div>
 </template>
@@ -133,7 +143,8 @@
         currentLyric: null,
         currentLineNum: 0,
         currentShow: 'cd',
-        playingLyric: ''
+        playingLyric: '',
+        volume:0.0
       }
     },
     components: {
@@ -193,6 +204,14 @@
       }
     },
     methods: {
+      addVolume(){
+        if(this.volume > 1.0){
+          return
+        }
+        this.volume= this.volume + 0.1
+        this.$refs.audio.volume = this.volume
+      },
+
       middleTouchStart(e){
         this.touch.initiated = true
         const touch = e.touches[0]
@@ -618,6 +637,19 @@
           }
           .progress-bar-wrapper {
             flex: 1;
+          }
+        }
+        .volume-wrapper{
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 10px;
+          padding: 10px 0;
+          .volume{
+            position: absolute;
+            top:-60px;
+            height: 60px;
           }
         }
         .operators {
