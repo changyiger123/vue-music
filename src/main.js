@@ -14,6 +14,8 @@ if (process.env.NODE_ENV !== 'production') {
  var vConsole = require('vconsole')
 }
 
+//分支练习
+//---------
 fastclick.attach(document.body)
 
 Vue.use(VueLazyload, {
